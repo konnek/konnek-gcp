@@ -11,6 +11,9 @@ jobs:
     steps:
     - name: check out code
       uses: actions/checkout@v1
+      # get release tag into `RELEASE_VERSION` env var
+      run: |
+        echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
 
     - name: setup gcloud
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
@@ -22,8 +25,8 @@ jobs:
 
     - name: zip the source code
       run: |
-        zip konnek-gcp-${{ github.ref }}.zip *.go go.*
+        zip konnek-gcp-$RELEASE_VERSION.zip *.go go.*
 
     - name: upload the source code
       run: |
-        gsutil cp konnek-gcp-${{ github.ref }}.zip gs://konnek-gcp/
+        gsutil cp konnek-gcp-$RELEASE_VERSION.zip gs://konnek-gcp/
