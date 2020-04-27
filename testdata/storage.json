@@ -1,0 +1,19 @@
+{
+    "bucket": "konnek-test",
+    "contentType": "application/octet-stream",
+    "crc32c": "exmple==",
+    "etag": "etag",
+    "generation": "1588000397832026",
+    "id": "konnek-test/file/1588000397832026",
+    "kind": "storage#object",
+    "md5Hash": "hash==",
+    "mediaLink": "https://www.googleapis.com/download/storage/v1/b/konnek-test/o/file?generation=1588000397832026&alt=media",
+    "metageneration": "1",
+    "name": "main.go",
+    "selfLink": "https://www.googleapis.com/storage/v1/b/konnek-test/o/file",
+    "size": "1211",
+    "storageClass": "STANDARD",
+    "timeCreated": "2020-04-27T15:13:17.831Z",
+    "timeStorageClassUpdated": "2020-04-27T15:13:17.831Z",
+    "updated": "2020-04-27T15:13:17.831Z"
+}
