@@ -1,0 +1,26 @@
+name: release
+
+on:
+  create:
+    tags:
+
+jobs:
+  release:
+    name: release on github
+    runs-on: ubuntu-latest
+    steps:
+    - name: check out code
+      uses: actions/checkout@v1
+
+    - name: zip the source code
+      run: |
+        zip konnek-gcp-${{ github.ref }}.zip *.go go.*
+
+    - name: setup gcloud
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+      run: |
+        gsutil cp konnek-gcp-${{ github.ref }}.zip gs://konnek-gcp/
